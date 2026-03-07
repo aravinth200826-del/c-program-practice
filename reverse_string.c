@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-#define MAX 20
+#define MAX 20  // define the MAX size as 20
 
 char stack[MAX];
 int top=-1;
@@ -13,14 +13,16 @@ printf("Stack is overflow");
 return;
 }
 top++;
-stack[top]=c;
-}
-char pop (){
+stack[top]=c;   //if top is 0,c value store at stack[0] place
+}               //in main function is run again again the push function stack[top] the top is incresed and stores the value of c
+
+
+char pop (){    
 if(top==-1){
 printf("Stack is empty");
 return -1;
 }
-return stack[top--];
+return stack[top--]; // we want get the value in main function so  we use the return operation
 }
 
 int main() {
