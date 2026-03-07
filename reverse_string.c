@@ -26,7 +26,7 @@ return stack[top--];
 int main() {
 char str[MAX];
 printf("Enter a word:\n");
-scanf("%d",str);
+scanf("%s",str);
 
 int length=strlen(str);
 
@@ -38,7 +38,7 @@ for(int i=0;i<length;i++) {
 str[i]=pop();
 }
 
-printf("Reversed oreder: %s",str);
+printf("Reversed order: %s",str);
 
 return 0;
 }
