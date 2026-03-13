@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdblh.h>
+
+struct node {
+int data;
+struct node*next;
+);
+
+void push(struct node**top,char value) {
+    struct node*newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+
+    if(newnode==NULL) {
+    printf("Stack overflow!(Memory allocation is failed)");
+    }
+    newnode->data=value;
+    newnode->next=*top;
+    *top=newnode;
+}
+
+char pop(struct node**top) {
+if (*top==NULL) {
+return '\0';
+}
+struct node*temp=*top;
+char p=temp->data;
+*top=(*top)->next;
+free(temp);
+
+return p;
+}
+int match(char a,char b) {
+if (a=='(' && b==')'){
+        return 1;
+    }
+    if (a=='{'&& b=='}') {
+        return 1;
+    }
+    if (a=='[' && b==']') {
+        return 1;
+    }
+    else  
+       return 0;
+}
+
+void checkbalanceornot(char par[]) {
+    struct node*stack=NULL;
+    int length=strlen(par);
+    
+    for(int i=0;i<length;i++) {
+        if (par[i]=='[' || par[i]=='{' || par[i]=='(') {
+            push(&stack,par[i]);
+        }
+        
+        else if(par[i]==']' || par[i]==')' || par[i]=='}') {
+            
+            if (stack==NULL) {
+                
+            }
+            char p=pop(&stack);
+            
+            if(!match(p,exp[i])) {
+                return 0;
+            }
+            
+        }
+    }
+ 
+
+
+
+
+
+
+ }
