@@ -1,0 +1,90 @@
+//Before you start to understand the program must you know above mention points:
+  //Algorithm:
+//step1.first of all read the expression
+//step2.If you find operand put into the postfix
+//step3.else if you find '(' push into  stack 
+//step4.then you will find ')' pop the stack until '(' this appear 
+//step5.if you find the operators push into stack
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<ctype.h>  //which uses to find is this num
+
+#define MAX 100
+
+char stack[MAX];
+int top=-1;
+
+void push(char c) {
+    if(top==MAX-1){
+        printf("Stack is overflow");
+        return;
+    }
+    stack[++top]=c;
+}
+
+char pop() {
+    if(top==-1) {
+        printf("List is empty");
+        return '\0';
+    }
+    return stack[top--];
+}
+int precedence(char operator) {
+    if (operator=='^') {
+        return 3;
+    }
+    else if(operator == '*' || operator == '/') {
+        return 2;
+    }
+    else if (operator =='+' || operator =='-'){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+void infixtopostfix(char infix[]) {
+char postfix[50];
+
+int i=0; int j=0;
+while(infix[i]!='\0') {
+if(isalnum(infix[i])) {
+    postfix[j++]=infix[i];
+}
+else if(infix[i]=='(') {
+    push(infix[i]);
+}
+else if (infix[i]==')') {
+    while(top>-1 && stack[top]!='(') {
+        postfix[j++]=pop();
+    }
+    pop(); //discard the '(' this from stack
+}
+else {
+    while(top>-1 && precedence(stack[top])>= precedence(infix[i])) {
+        postfix[j++]=pop();
+    }
+    push(infix[i]);
+}
+
+i++;
+
+}
+
+while(top>-1) {
+    postfix[j++]=pop();  //if any operators still remain the stack then pop it
+}
+postfix[j]='\0';
+printf("Postfix:%s",postfix);
+
+}
+int main() {
+    char infix[50];
+    printf("Enter infix function:");
+    scanf("%s",infix);
+    infixtopostfix(infix);   
+    
+}
