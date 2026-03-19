@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#define MAX 5
+
+int queue[MAX];
+int front=-1;
+int rear=-1;
+
+void enqueue(int value) {
+if(rear==MAX-1) {
+printf("Queue is overflow!");
+}
+else {
+if (front==-1) 
+      front=0;
+queue[++rear]=value;
+}
+}
+
+void dequeue() {
+if(front==-1 || front>rear) {
+printf("Queue is underflow!");
+}
+printf("\n %d is deleted",queue[front]);
+front++;
+}
+int peek() {
+if (front==-1) {
+printf("Queue is empty");
+}
+return queue[front];
+}
+void display () {
+if (front==-1 || front>rear) {
+printf("queue is empty");
+}
+for (int i=front;i <=rear;i++) {
+printf("%d ",queue[i]);
+}
+}
+int main() {
+enqueue(10);
+enqueue(20);
+enqueue(30);
+enqueue(40);
+printf("elements in the queue's are:\n");
+display();
+dequeue();
+printf("After a pop front element is %d\n",peek());
+display();
+
+return 0;
+}
+
