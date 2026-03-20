@@ -1,3 +1,16 @@
+//QUEUE
+
+//The principle of queue is  First In First Out (FIFO)  means who comes first which is  go out first
+//In enqueue(insertion) value stores in rear index and which is rear is move next next index,front function is always point to the index of the 0
+//In dequeue(deletion) we delete the front position of queue and move the front to next 
+
+
+
+
+
+
+
+
 #include<stdio.h>
 #include<stdlib.h>
 
